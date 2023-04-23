@@ -1,0 +1,24 @@
+{
+  "name": "projeto_lista",
+  "version": "1.0.0",
+  "description": "Trabalho para primeira nota de Programação Web 2, orientado pelo professor André Faria Ruaro",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/henrysantoss/ProjectN1PW2.git"
+  },
+  "keywords": [
+    "Node",
+    "Express",
+    "Academico"
+  ],
+  "author": "Henry Santos, Isaque Kleinschmidt e Walcileine Kleinschmidt",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/henrysantoss/ProjectN1PW2/issues"
+  },
+  "homepage": "https://github.com/henrysantoss/ProjectN1PW2#readme"
+}
