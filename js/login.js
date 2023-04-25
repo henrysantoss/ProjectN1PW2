@@ -8,7 +8,7 @@ function entrar(){
             json.forEach(conta => {
                 if (login == conta.usuario && senha == conta.senha) {
                     logar = true;
-                    window.location.replace("/escolha");
+                    window.location.replace("/criar");
                 }
             });
 

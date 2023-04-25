@@ -1,13 +1,18 @@
-.ag-format-container {
+.teste-container {
     width: 1142px;
     margin: 0 auto;
   }
   
   
   body {
-    background-color: aqua;
+    background-image: url("fundo_home.png");
+    background-size: 100% auto; 
+    background-attachment:fixed;
+    background-position: left top;
+    overflow : hidden;
+    overflow-y: auto;
   }
-  .ag-courses_box {
+  .card_box {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -16,12 +21,13 @@
     align-items: flex-start;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
+    
   
     padding: 10px 0;
   }
 
   .card {
-    background-color: aqua;
+    background-color: transparent;
     border: none;
   }
 
@@ -32,111 +38,117 @@
     grid-template-columns: repeat(3, 1fr);
   }
 
-  .ag-courses_item {
+  .card_item {
     -ms-flex-preferred-size: calc(33.33333% - 30px);
     flex-basis: calc(33.33333% - 30px);
   
     margin: 0 1px 10px;
   
     overflow: hidden;
+    box-shadow: 4px 4px 4px 6px rgba(0, 0, 0, 0.4);
   
     border-radius: 28px;
   }
-  .ag-courses-item_link {
+  .card-item_link {
     display: block;
     padding: 30px 20px;
-    background-color: #121212;
+    background-color: rgba(255, 255, 255, 0.85);
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.1) inset;
   
     overflow: hidden;
   
     position: relative;
   }
-  .ag-courses-item_link:hover,
-  .ag-courses-item_link:hover .ag-courses-item_date {
-    text-decoration: none;
-    color: #FFF;
-  }
-  .ag-courses-item_link:hover .ag-courses-item_bg {
+  .card-item_link:hover .card-item_bg {
     -webkit-transform: scale(10);
     -ms-transform: scale(10);
     transform: scale(10);
   }
-  .ag-courses-item_title {
-    min-height: 80px;
+  .card-item_titulo {
+    min-height: 60px;
     margin: 1rem auto;
+    text-align: center;
   
     overflow: hidden;
+    z-index: 19999;
   
     font-weight: bold;
     font-size: 30px;
-    color: #FFF;
+    color: #000000;
     position: relative;
+
+    -webkit-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    transition: all .5s ease;
   }
-  .ag-courses-item_bg {
+
+  .card-item_link:hover .card-item_titulo{
+    color: #FFF;
+  }
+  .card-item_bg {
     height: 128px;
     width: 128px;
-    background-color: #f9b234;
   
     z-index: 1;
     position: absolute;
-    top: -75px;
-    right: -75px;
+    top: -55px;
+    right: -55px;
   
     border-radius: 50%;
+    box-shadow: 2px 2px 2px 3px rgba(0, 0, 0, 0.2);
   
     -webkit-transition: all .5s ease;
     -o-transition: all .5s ease;
     transition: all .5s ease;
   }
-  .ag-courses_item:nth-child(2n) .ag-courses-item_bg {
-    background-color: #3ecd5e;
-  }
-  .ag-courses_item:nth-child(3n) .ag-courses-item_bg {
-    background-color: #e44002;
-  }
-  .ag-courses_item:nth-child(4n) .ag-courses-item_bg {
-    background-color: #952aff;
-  }
-  .ag-courses_item:nth-child(5n) .ag-courses-item_bg {
-    background-color: #cd3e94;
-  }
-  .ag-courses_item:nth-child(6n) .ag-courses-item_bg {
-    background-color: #4c49ea;
-  }
   
   
   
   @media only screen and (max-width: 979px) {
-    .ag-courses_item {
+    .card_item {
       -ms-flex-preferred-size: calc(50% - 30px);
       flex-basis: calc(50% - 30px);
     }
-    .ag-courses-item_title {
+    .card-item_titulo {
       font-size: 24px;
     }
   }
   
   @media only screen and (max-width: 767px) {
-    .ag-format-container {
+    .teste-container {
       width: 96%;
     }
   
   }
   @media only screen and (max-width: 639px) {
-    .ag-courses_item {
+    .card_item {
       -ms-flex-preferred-size: 100%;
       flex-basis: 100%;
     }
-    .ag-courses-item_title {
+    .card-item_titulo {
       min-height: 72px;
       line-height: 1;
   
       font-size: 24px;
     }
-    .ag-courses-item_link {
+    .card-item_link {
       padding: 22px 40px;
     }
-    .ag-courses-item_date-box {
+    .card-item_date-box {
       font-size: 16px;
     }
+  }
+
+  .criar {
+    background-color : rgba(255, 255, 255, 0.7);
+    color: black;
+    padding: 10px 20px;
+    border-radius: 4px;
+    border-color: rgba(255, 255, 255, 0.7);
+  }
+  
+  #botaoCriar {
+    position: fixed;
+    bottom: -4px;
+    right: 10px;
   }

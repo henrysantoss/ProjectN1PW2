@@ -8,7 +8,10 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #cdfbf4;
+    background-image: url("fundo_home.png");
+    background-size: 100% auto; 
+    background-attachment:fixed;
+    background-position: left top;
 }
 
 .Login {
