@@ -1,10 +1,9 @@
-
 const formulario = document.querySelector('#form');
 
-formulario.addEventListener('submit', function(event) {
+formulario.addEventListener('submit', function (event) {
   event.preventDefault();
   const id = document.querySelector('#select-opcoes').value;
-  
+
   if (id == "-1") {
     alert("Selecione um Teste!");
     return false;
@@ -16,28 +15,41 @@ formulario.addEventListener('submit', function(event) {
   const opcaoC = document.querySelector('#opcaoC').value;
   const opcaoD = document.querySelector('#opcaoD').value;
   const opcaoE = document.querySelector('#opcaoE').value;
-  const resposta = document.querySelector('#resposta').value;
-  console.log(id);
+  const selectResposta = document.querySelector('#select-resposta').value;
+  var resposta = "";
+  if (selectResposta == 'A') {
+    resposta = opcaoA;
+  } else if (selectResposta == 'B') {
+    resposta = opcaoB;
+  } else if (selectResposta == 'C') {
+    resposta = opcaoC;
+  } else if (selectResposta == 'D') {
+    resposta = opcaoD;
+  } else if (selectResposta == 'E') {
+    resposta = opcaoE;
+  }
+  console.log(resposta);
   const dadosDoFormulario = {
     id: id,
     novaPergunta: {
       pergunta: pergunta,
-    opcoes: [{
-			opcaoA: opcaoA,
-		},
-		{
-			opcaoB: opcaoB,
-		},
-		{
-			opcaoC: opcaoC,
-		},
-		{
-			opcaoD: opcaoD,
-		},
-		{
-			opcaoE: opcaoE,
-		}],
-		resposta: resposta
+      opcoes: [{
+          opcaoA: opcaoA,
+        },
+        {
+          opcaoB: opcaoB,
+        },
+        {
+          opcaoC: opcaoC,
+        },
+        {
+          opcaoD: opcaoD,
+        },
+        {
+          opcaoE: opcaoE,
+        }
+      ],
+      resposta: resposta
     }
   };
   console.log(dadosDoFormulario);
@@ -56,12 +68,23 @@ formulario.addEventListener('submit', function(event) {
     .catch(error => console.log(error));
 });
 
+function sortCrescente(nome){  
+  return function(a,b){  
+     if(a[nome].toLowerCase() > b[nome].toLowerCase())  
+        return 1;  
+     else if(a[nome].toLowerCase() < b[nome].toLowerCase())  
+        return -1;  
+ 
+     return 0;  
+  }  
+}
+
 async function PreencheCombobox() {
   const requestOptions = {
-	method: 'GET'
+    method: 'GET'
   };
 
-  var dados = await fetch('/combobox', requestOptions)
+  var dados = await fetch('/perguntas', requestOptions)
     .then((response) => response.json())
     .catch(error => console.log(error));
   console.log(dados)
@@ -69,12 +92,30 @@ async function PreencheCombobox() {
   const select = document.querySelector('#select-opcoes');
   var id = 0;
   dados.map((dado) => {
-	const option = document.createElement('option');
-	option.value = id;
-	option.textContent = dado.teste;
-	select.appendChild(option);
-	id++;
-    });
+    const option = document.createElement('option');
+    option.value = id;
+    option.textContent = dado.teste;
+    select.appendChild(option);
+    id++;
+  });
 }
 
+function telaHome(){
+  window.location.replace("/");
+}
+
+function telaFormTeste(){
+  sessionStorage.setItem("acessar_form", "T");
+  window.location.replace("/formTeste");
+}
+
+function VerificaEntradaDireta() {
+  var acessar = sessionStorage.getItem("acessar_form");
+  if (acessar != "T") {
+    window.location.replace("/");
+  }
+  sessionStorage.setItem("acessar_form", "F");
+}
+
+VerificaEntradaDireta();
 PreencheCombobox();

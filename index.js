@@ -19,6 +19,14 @@ router.get('/formulario', function (req, res) {
   res.sendFile(path.join(__dirname + '/html/formulario.html'));
 });
 
+router.get('/teste', function (req, res) {
+  res.sendFile(path.join(__dirname + '/html/teste.html'));
+});
+
+router.get('/formTeste', function (req, res) {
+  res.sendFile(path.join(__dirname + '/html/formularioTeste.html'));
+});
+
 app.use('/', router);
 app.use(express.static('css'));
 app.use(express.static('js'));
@@ -35,10 +43,9 @@ app.use(express.json());
 
 app.post('/submit-form', (req, res) => {
   const formData = req.body.novaPergunta;
-  console.log(formData)
   let dados;
   try {
-    dados = JSON.parse(fs.readFileSync('dados/dados.json'));
+    dados = JSON.parse(fs.readFileSync('dados/teste.json'));
   } catch (err) {
     dados = {};
   }
@@ -49,21 +56,42 @@ app.post('/submit-form', (req, res) => {
       console.error(err);
       return res.status(500).send('Erro ao gravar os dados do formulário.');
     }
-    console.log('JSON gravado com sucesso!');
+    console.log('Pergunta gravado com sucesso!');
     return res.status(200).json({
-      message: 'Formulário enviado com sucesso!'
+      message: 'Pergunta enviada com sucesso!'
     });
   });
 });
 
-app.get('/combobox', (req, res) => {
+app.post('/submit-form-teste', (req, res) => {
+  const formData = req.body;
   let dados;
   try {
-    dados = JSON.parse(fs.readFileSync('dados/dados.json'));
+    dados = JSON.parse(fs.readFileSync('dados/teste.json'));
   } catch (err) {
     dados = {};
   }
-  console.log(dados)
+  console.log(formData);
+  dados.push(formData);
+  fs.writeFile('dados/dados.json', JSON.stringify(dados), (err) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).send('Erro ao gravar os dados do formulário.');
+    }
+    console.log('Teste gravado com sucesso!');
+    return res.status(200).json({
+      message: 'Pergunta enviada com sucesso!'
+    });
+  });
+});
+
+app.get('/perguntas', (req, res) => {
+  let dados;
+  try {
+    dados = JSON.parse(fs.readFileSync('dados/teste.json'));
+  } catch (err) {
+    dados = {};
+  }
   res.send(dados);
 });
 
@@ -75,11 +103,10 @@ app.post('/fazer-login', (req, res) => {
   } catch (err) {
     dados = {};
   }
-  console.log(dados)
   dados.forEach(conta => {
     if (req.body.login == conta.usuario && req.body.senha == conta.senha) {
       logar = true;
     }
   });
-  res.send(logar);
+  res.send({logar: logar ? 'T': 'F'});
 });

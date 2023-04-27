@@ -1,4 +1,4 @@
-function entrar() {
+async function entrar() {
     var login = document.getElementById("usuario").value;
     var senha = document.getElementById("senha").value;
     const dadosDoFormulario = {
@@ -14,13 +14,13 @@ function entrar() {
         }
     };
 
-    fetch('/fazer-login', requestOptions)
-        .then(response => {
-            if (response) {
-                window.location.replace("/formulario"); 
-            } else {
-                throw new Error("Login ou Senha incorretos");
-            }
-        })
+    var dado = await fetch('/fazer-login', requestOptions)
+        .then(response => response.json())
         .catch(error => alert(error));
+    if (dado.logar == 'T') {
+        sessionStorage.setItem("acessar_form", "T");
+        window.location.replace('/formTeste');
+    } else {
+        alert('Login/Senha inválidos');
+    }
 }

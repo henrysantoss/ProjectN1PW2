@@ -32,9 +32,10 @@ const gerarMetodo = async () => {
     method: 'GET'
     };
 
-    var dados = await fetch('/combobox', requestOptions)
+    var dados = await fetch('/perguntas', requestOptions)
       .then((response) => response.json())
       .catch(error => console.log(error));
+    dados = dados.sort(sortCrescente("teste"));
     dados.map((dado) => {
         console.log(dado);
         const elemento = document.createElement('div');

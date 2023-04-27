@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Formulário de contato</title>
+    <title>Criar Perguntas</title>
     <!-- Inclua o Bootstrap CSS -->
     <link
       rel="stylesheet"
@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="formulario.css" />
   </head>
   <body>
-    <div class="container">
+    <div class="container mb-3">
       <h1 class="text-center mb-5 text-light">Criar Pergunta</h1>
       <div class="card">
         <form id="form" method="POST">
@@ -45,14 +45,26 @@
           <div class="card-box mb-3 text-center">
             <input name="opcaoE" id="opcaoE" placeholder="Opção E" required />
           </div>
-          <div class="card-box mb-3 text-center">
-            <input name="resposta" id="resposta" placeholder="Resposta Correta" required />
-          </div>
+          <select class="form-select mb-3" id="select-resposta">
+            <option value="A" selected>Opção A</option>
+            <option value="B">Opção B</option>
+            <option value="C">Opção C</option>
+            <option value="D">Opção D</option>
+            <option value="E">Opção E</option>
+          </select>
           <div class="text-center">
             <button type="submit" class="btn btn-primary">Enviar</button>
           </div>
         </form>
       </div>
+    </div>
+
+    <div id="botaoHome">
+      <button class="criar" onclick="telaHome(); return false">Home</button>
+    </div>
+
+    <div id="botaoTeste">
+      <button class="criar" onclick="telaFormTeste(); return false">Criar Teste</button>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/js/bootstrap.bundle.min.js"></script>
