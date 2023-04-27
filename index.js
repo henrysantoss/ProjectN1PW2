@@ -41,17 +41,16 @@ app.post('/submit-form', (req, res) => {
   let dados;
   try {
     // Ler o conteúdo atual do arquivo "dados.json" e analisá-lo em um objeto JavaScript
-    dados = JSON.parse(fs.readFileSync('dados.json'));
+    dados = JSON.parse(fs.readFileSync('dados/dados.json'));
   } catch (err) {
     // Se o arquivo não existir ou não puder ser analisado, inicialize a variável dados com um objeto vazio
     dados = {};
   }
 
-  // Adicionar os novos dados ao objeto JavaScript
-  dados = {...dados, ...formData};
+  dados[3].perguntas.push(formData);
 
   // Escrever o objeto JavaScript de volta ao arquivo "dados.json"
-  fs.writeFile('dados.json', JSON.stringify(dados), (err) => {
+  fs.writeFile('dados/dados.json', JSON.stringify(dados), (err) => {
     if (err) {
       console.error(err);
       return res.status(500).send('Erro ao gravar os dados do formulário.');

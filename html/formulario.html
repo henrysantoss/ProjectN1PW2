@@ -1,52 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Formulário de contato</title>
-  <!-- Inclua o Bootstrap CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css">
-  
-  <link rel="stylesheet" href="formulario.css">
-</head>
-<body>
-  <div class="container">
-    <h1 class="text-center mb-5">Criar Pergunta</h1>
-    <form id="form" method="POST">
-      <div class="mb-3">
-        <label class="form-label"><h3>Pergunta?</h3></label>
-        <input type="text" class="form-control" id="pergunta" name="pergunta" required>
-      </div>
-      <div class="mb-3">
-        <label for="A" class="form-label">Opçao A:</label>
-        <input name="opcaoA" id="opcaoA" required>
-      </div>
-      <div class="mb-3">
-        <label for="B" class="form-label">Opçao B:</label>
-        <input name="opcaoB" id="opcaoB"required>
-      </div>
-      <div class="mb-3">
-        <label for="C" class="form-label">Opçao C:</label>
-        <input name="opcaoC" id="opcaoC" required>
-      </div>
-      <div class="mb-3">
-        <label for="D" class="form-label">Opçao D:</label>
-        <input name="opcaoD" id="opcaoD" required>
-      </div>
-      <div class="mb-3">
-        <label for="E" class="form-label">Opçao E:</label>
-        <input name="opcaoE" id="opcaoE" required>
-      </div>
-      <div class="mb-3">
-        <label for="resposta" class="form-label">Resposta Correta:</label>
-        <input name="resposta" id= "resposta" required>
-      </div>
-      <div class="text-center">
-        <button type="submit" class="btn btn-primary">Enviar</button>
-      </div>
-    </form>
-  </div>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Formulário de contato</title>
+    <!-- Inclua o Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css"
+    />
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/js/bootstrap.bundle.min.js"></script>
-  <script src="formulario.js"></script>
-</body>
+    <link rel="stylesheet" href="formulario.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="text-center mb-5 text-light">Criar Pergunta</h1>
+      <div class="card">
+        <form id="form" method="POST">
+          <div class="mb-3">
+            <input
+              type="text"
+              class="form-control"
+              id="pergunta"
+              name="pergunta"
+              placeholder="Escreva sua Pergunta"
+              required
+            />
+          </div>
+          <div class="card-box mb-3 text-center">
+            <input name="opcaoA" id="opcaoA" placeholder="Opção A" required />
+          </div>
+          <div class="card-box mb-3 text-center">
+            <input name="opcaoB" id="opcaoB" placeholder="Opção B" required />
+          </div>
+          <div class="card-box mb-3 text-center">
+            <input name="opcaoC" id="opcaoC" placeholder="Opção C" required />
+          </div>
+          <div class="card-box mb-3 text-center">
+            <input name="opcaoD" id="opcaoD" placeholder="Opção D" required />
+          </div>
+          <div class="card-box mb-3 text-center">
+            <input name="opcaoE" id="opcaoE" placeholder="Opção E" required />
+          </div>
+          <div class="card-box mb-3 text-center">
+            <input name="resposta" id="resposta" placeholder="Resposta Correta" required />
+          </div>
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary">Enviar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/js/bootstrap.bundle.min.js"></script>
+    <script src="formulario.js"></script>
+  </body>
 </html>
