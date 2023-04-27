@@ -49,7 +49,6 @@ formulario.addEventListener('submit', function(event) {
       'Content-Type': 'application/json'
     }
   };
-  console.log(requestOptions);
 
   fetch('/submit-form', requestOptions)
     .then(response => response.json())

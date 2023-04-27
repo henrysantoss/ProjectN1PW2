@@ -3,23 +3,23 @@ const app = express();
 const path = require('path');
 const router = express.Router();
 
-router.get('/', function(req, res) {
-    res.sendFile(path.join(__dirname+'/html/home.html'));
+router.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname + '/html/home.html'));
 });
 
-router.get('/login', function(req, res) {
-    res.sendFile(path.join(__dirname+'/html/login.html'));
+router.get('/login', function (req, res) {
+  res.sendFile(path.join(__dirname + '/html/login.html'));
 });
 
-router.get('/criar', function(req, res) {
-    res.sendFile(path.join(__dirname+'/html/criar.html'));
+router.get('/criar', function (req, res) {
+  res.sendFile(path.join(__dirname + '/html/criar.html'));
 });
 
-router.get('/formulario', function(req, res) {
-    res.sendFile(path.join(__dirname+'/html/formulario.html'));
+router.get('/formulario', function (req, res) {
+  res.sendFile(path.join(__dirname + '/html/formulario.html'));
 });
 
-app.use('/',router);
+app.use('/', router);
 app.use(express.static('css'));
 app.use(express.static('js'));
 app.use(express.static('dados'));
@@ -31,45 +31,55 @@ console.log('Servidor ligado corretamente');
 
 const fs = require('fs');
 
-// Configurar o body-parser para interpretar o corpo das solicitações como JSON
 app.use(express.json());
 
-// Manipulador de rota para o envio do formulário
 app.post('/submit-form', (req, res) => {
   const formData = req.body.novaPergunta;
   console.log(formData)
   let dados;
   try {
-    // Ler o conteúdo atual do arquivo "dados.json" e analisá-lo em um objeto JavaScript
     dados = JSON.parse(fs.readFileSync('dados/dados.json'));
   } catch (err) {
-    // Se o arquivo não existir ou não puder ser analisado, inicialize a variável dados com um objeto vazio
     dados = {};
   }
 
   dados[req.body.id].perguntas.push(formData);
-
-  // Escrever o objeto JavaScript de volta ao arquivo "dados.json"
   fs.writeFile('dados/dados.json', JSON.stringify(dados), (err) => {
     if (err) {
       console.error(err);
       return res.status(500).send('Erro ao gravar os dados do formulário.');
     }
     console.log('JSON gravado com sucesso!');
-    return res.status(200).json({ message: 'Formulário enviado com sucesso!' });
+    return res.status(200).json({
+      message: 'Formulário enviado com sucesso!'
+    });
   });
 });
 
 app.get('/combobox', (req, res) => {
   let dados;
   try {
-    // Ler o conteúdo atual do arquivo "dados.json" e analisá-lo em um objeto JavaScript
     dados = JSON.parse(fs.readFileSync('dados/dados.json'));
   } catch (err) {
-    // Se o arquivo não existir ou não puder ser analisado, inicialize a variável dados com um objeto vazio
     dados = {};
   }
   console.log(dados)
   res.send(dados);
 });
 
+app.post('/fazer-login', (req, res) => {
+  let dados;
+  var logar = false;
+  try {
+    dados = JSON.parse(fs.readFileSync('dados/login.json'));
+  } catch (err) {
+    dados = {};
+  }
+  console.log(dados)
+  dados.forEach(conta => {
+    if (req.body.login == conta.usuario && req.body.senha == conta.senha) {
+      logar = true;
+    }
+  });
+  res.send(logar);
+});

@@ -28,9 +28,13 @@ function acessarTeste(teste) {
 }
 
 const gerarMetodo = async () => {
-    var dados = await fetch('dados.json')
-        .then((response) => response.json()); 
-    dados = dados.sort(sortCrescente("teste"));
+  const requestOptions = {
+    method: 'GET'
+    };
+
+    var dados = await fetch('/combobox', requestOptions)
+      .then((response) => response.json())
+      .catch(error => console.log(error));
     dados.map((dado) => {
         console.log(dado);
         const elemento = document.createElement('div');
