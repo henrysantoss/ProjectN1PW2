@@ -1,7 +1,9 @@
+
 const formulario = document.querySelector('#form');
 
 formulario.addEventListener('submit', function(event) {
   event.preventDefault();
+  const id = document.querySelector('#select-opcoes').value;
   const pergunta = document.querySelector('#pergunta').value;
   const opcaoA = document.querySelector('#opcaoA').value;
   const opcaoB = document.querySelector('#opcaoB').value;
@@ -9,8 +11,11 @@ formulario.addEventListener('submit', function(event) {
   const opcaoD = document.querySelector('#opcaoD').value;
   const opcaoE = document.querySelector('#opcaoE').value;
   const resposta = document.querySelector('#resposta').value;
+  console.log(id);
   const dadosDoFormulario = {
-    pergunta: pergunta,
+    id: id,
+    novaPergunta: {
+      pergunta: pergunta,
     opcoes: [{
 			opcaoA: opcaoA,
 		},
@@ -27,6 +32,7 @@ formulario.addEventListener('submit', function(event) {
 			opcaoE: opcaoE,
 		}],
 		resposta: resposta
+    }
   };
   console.log(dadosDoFormulario);
 
@@ -44,3 +50,26 @@ formulario.addEventListener('submit', function(event) {
     .then(data => console.log(data))
     .catch(error => console.log(error));
 });
+
+async function PreencheCombobox() {
+  const requestOptions = {
+	method: 'GET'
+  };
+
+  var dados = await fetch('/combobox', requestOptions)
+    .then((response) => response.json())
+    .catch(error => console.log(error));
+  console.log(dados)
+
+  const select = document.querySelector('#select-opcoes');
+  var id = 0;
+  dados.map((dado) => {
+	const option = document.createElement('option');
+	option.value = id;
+	option.textContent = dado.teste;
+	select.appendChild(option);
+	id++;
+    });
+}
+
+PreencheCombobox();

@@ -36,7 +36,7 @@ app.use(express.json());
 
 // Manipulador de rota para o envio do formulário
 app.post('/submit-form', (req, res) => {
-  const formData = req.body;
+  const formData = req.body.novaPergunta;
   console.log(formData)
   let dados;
   try {
@@ -47,7 +47,7 @@ app.post('/submit-form', (req, res) => {
     dados = {};
   }
 
-  dados[3].perguntas.push(formData);
+  dados[req.body.id].perguntas.push(formData);
 
   // Escrever o objeto JavaScript de volta ao arquivo "dados.json"
   fs.writeFile('dados/dados.json', JSON.stringify(dados), (err) => {
@@ -58,5 +58,18 @@ app.post('/submit-form', (req, res) => {
     console.log('JSON gravado com sucesso!');
     return res.status(200).json({ message: 'Formulário enviado com sucesso!' });
   });
+});
+
+app.get('/combobox', (req, res) => {
+  let dados;
+  try {
+    // Ler o conteúdo atual do arquivo "dados.json" e analisá-lo em um objeto JavaScript
+    dados = JSON.parse(fs.readFileSync('dados/dados.json'));
+  } catch (err) {
+    // Se o arquivo não existir ou não puder ser analisado, inicialize a variável dados com um objeto vazio
+    dados = {};
+  }
+  console.log(dados)
+  res.send(dados);
 });
 

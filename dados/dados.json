@@ -12,6 +12,20 @@
             "opcao": "opcao4"
         }],
         "resposta": "opcao2"
+    }, {
+        "pergunta": "Você é?",
+        "opcoes": [{
+            "opcaoA": "Sim"
+        }, {
+            "opcaoB": "Não"
+        }, {
+            "opcaoC": "Claro"
+        }, {
+            "opcaoD": "Talvez"
+        }, {
+            "opcaoE": "Eu"
+        }],
+        "resposta": "Eu"
     }]
 }, {
     "teste": "Descubra seu QI",
