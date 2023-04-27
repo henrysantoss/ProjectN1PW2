@@ -4,6 +4,12 @@ const formulario = document.querySelector('#form');
 formulario.addEventListener('submit', function(event) {
   event.preventDefault();
   const id = document.querySelector('#select-opcoes').value;
+  
+  if (id == "-1") {
+    alert("Selecione um Teste!");
+    return false;
+  }
+
   const pergunta = document.querySelector('#pergunta').value;
   const opcaoA = document.querySelector('#opcaoA').value;
   const opcaoB = document.querySelector('#opcaoB').value;
