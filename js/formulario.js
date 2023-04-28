@@ -66,6 +66,8 @@ formulario.addEventListener('submit', function (event) {
     .then(response => response.json())
     .then(data => console.log(data))
     .catch(error => console.log(error));
+  sessionStorage.setItem("acessar_form", "T");
+  location.reload();
 });
 
 function sortCrescente(nome){  

@@ -51,7 +51,7 @@ app.post('/submit-form', (req, res) => {
   }
 
   dados[req.body.id].perguntas.push(formData);
-  fs.writeFile('dados/dados.json', JSON.stringify(dados), (err) => {
+  fs.writeFile('dados/teste.json', JSON.stringify(dados), (err) => {
     if (err) {
       console.error(err);
       return res.status(500).send('Erro ao gravar os dados do formulário.');
@@ -71,9 +71,8 @@ app.post('/submit-form-teste', (req, res) => {
   } catch (err) {
     dados = {};
   }
-  console.log(formData);
   dados.push(formData);
-  fs.writeFile('dados/dados.json', JSON.stringify(dados), (err) => {
+  fs.writeFile('dados/teste.json', JSON.stringify(dados), (err) => {
     if (err) {
       console.error(err);
       return res.status(500).send('Erro ao gravar os dados do formulário.');
