@@ -152,3 +152,9 @@
     bottom: -4px;
     right: 10px;
   }
+
+  #botaoResultados {
+    position: fixed;
+    top: -4px;
+    left: 10px;
+  }

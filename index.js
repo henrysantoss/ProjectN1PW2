@@ -27,6 +27,10 @@ router.get('/formTeste', function (req, res) {
   res.sendFile(path.join(__dirname + '/html/formularioTeste.html'));
 });
 
+router.get('/resultados', function (req, res) {
+  res.sendFile(path.join(__dirname + '/html/resultados.html'));
+});
+
 app.use('/', router);
 app.use(express.static('css'));
 app.use(express.static('js'));
@@ -93,6 +97,17 @@ app.get('/perguntas', (req, res) => {
   }
   res.send(dados);
 });
+
+app.get('/resultado-testes', (req, res) => {
+  let dados;
+  try {
+    dados = JSON.parse(fs.readFileSync('dados/resultados.json'));
+  } catch (err) {
+    dados = {};
+  }
+  res.send(dados);
+});
+
 
 app.post('/fazer-login', (req, res) => {
   let dados;

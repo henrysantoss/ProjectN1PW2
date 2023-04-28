@@ -1,0 +1,14 @@
+body {
+    background-image: url("fundo_home.png");
+    background-size: 100% auto; 
+    background-attachment:fixed;
+    background-position: left top;
+    overflow : hidden;
+    overflow-y: auto;
+  }
+  .card-container {
+    width: 80%;
+    margin: 4rem auto;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }

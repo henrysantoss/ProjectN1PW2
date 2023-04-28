@@ -64,4 +64,8 @@ function telaLogin(){
   window.location.replace("/login");
 }
 
+function telaResultados(){
+  window.location.replace("/resultados");
+}
+
 gerarMetodo();
