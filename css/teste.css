@@ -1,0 +1,28 @@
+body {
+    background-image: url("fundo_home.png");
+    background-size: 100% auto; 
+    background-attachment:fixed;
+    background-position: left top;
+    overflow : hidden;
+    overflow-y: auto;
+    align-items: center;
+  }
+
+  .card {
+    background-color: rgba(255, 255, 255, 0.85);
+    border: none;
+    align-items: center;
+}
+
+.container {
+    max-width: 600px;
+    margin-top: 50px;
+}
+
+label {
+    font-size: 20px;
+}
+
+p {
+    font-size: 25px;
+}
