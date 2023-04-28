@@ -17,6 +17,7 @@ body {
 .container {
     max-width: 600px;
     margin-top: 50px;
+    display: grid;
 }
 
 label {
@@ -25,4 +26,24 @@ label {
 
 p {
     font-size: 25px;
+}
+
+.criar {
+    background-color : rgba(255, 255, 255, 0.7);
+    color: black;
+    padding: 10px 20px;
+    border-radius: 4px;
+    border-color: rgba(255, 255, 255, 0.7);
+  }
+
+#botaoEnviar {
+    position: fixed;
+    bottom: -4px;
+    right: 10px;
+  }
+
+  #botaoHome {
+    position: fixed;
+    top: -4px;
+    left: 10px;
 }

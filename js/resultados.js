@@ -45,7 +45,7 @@ const gerarMetodo = async () => {
                     Quantidade Acertos: ${dado.qtd_acertos}
                     </div>
                     <div class="card-item_titulo">
-                      Porcentagem de Acertos: ${dado.porcentagem}%
+                      Porcentagem de Acertos: ${Number(dado.porcentagem).toFixed(2)}%
                     </div>
                   </div>
                 </div>

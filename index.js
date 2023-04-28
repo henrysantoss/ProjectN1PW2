@@ -124,3 +124,24 @@ app.post('/fazer-login', (req, res) => {
   });
   res.send({logar: logar ? 'T': 'F'});
 });
+
+app.post('/submit-resultados', (req, res) => {
+  const formData = req.body;
+  let dados;
+  try {
+    dados = JSON.parse(fs.readFileSync('dados/resultados.json'));
+  } catch (err) {
+    dados = {};
+  }
+  dados.push(formData);
+  fs.writeFile('dados/resultados.json', JSON.stringify(dados), (err) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).send('Erro ao gravar os dados do resultados.');
+    }
+    console.log('Teste gravado com sucesso!');
+    return res.status(200).json({
+      message: 'Pergunta enviada com sucesso!'
+    });
+  });
+});
